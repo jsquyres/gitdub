@@ -189,14 +189,14 @@ def run(config)
     cert = File.open(config['gitdub']['ssl']['cert']).read
     key = File.open(config['gitdub']['ssl']['key']).read
     webrick_options = {
-      app:            GitDubServer,
-      BindAddress:    config['gitdub']['bind'],
-      Port:           config['gitdub']['port'],
-      Logger:         $logger,
-      SSLEnable:      true,
-      SSLCertificate: OpenSSL::X509::Certificate.new(cert),
-      SSLPrivateKey:  OpenSSL::PKey::RSA.new(key),
-      SSLCertName:    [['CN', WEBrick::Utils::getservername]]
+      app =>            GitDubServer,
+      BindAddress =>   config['gitdub']['bind'],
+      Port =>           config['gitdub']['port'],
+      Logger =>         $logger,
+      SSLEnable =>      true,
+      SSLCertificate => OpenSSL::X509::Certificate.new(cert),
+      SSLPrivateKey => OpenSSL::PKey::RSA.new(key),
+      SSLCertName =>   [['CN', WEBrick::Utils::getservername]]
     }
 
     Rack::Server.start(webrick_options)
