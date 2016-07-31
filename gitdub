@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# JMS Added this to find the sinatra
+require 'rubygems'
+
 require 'fileutils'
 require 'json'
 require 'logger'
